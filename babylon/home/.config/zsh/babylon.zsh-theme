@@ -10,7 +10,7 @@
 
 setopt prompt_subst
 
-BABYLON_DEFAULT_USER=${BABYLON_DEFAULT_USER:-rahal}   # hide context on your own box
+BABYLON_DEFAULT_USER=${BABYLON_DEFAULT_USER:-$USER}   # hide context on your own box
 
 S_TEXT='#F0E7D2'  S_STRUCT='#D4A72C' S_MUTED='#A99B80'
 S_TAN='#7A6A4C'   S_SHU='#EB4B50'    S_AI='#7FA4E2'

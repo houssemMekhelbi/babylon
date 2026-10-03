@@ -301,6 +301,7 @@
     "on-click-right": "~/.local/bin/babylon-yawm add"
   },
   "clock": {
+    "locale": "en_GB.UTF-8",
     "format": "<span font_family='JetBrainsMono Nerd Font' size='small' weight='normal' letter_spacing='0' color='#A99B80'>{0:%a %d %b}</span>   {0:%H:%M}",
     "tooltip-format": "<tt>{calendar}</tt>",
     "calendar": {
