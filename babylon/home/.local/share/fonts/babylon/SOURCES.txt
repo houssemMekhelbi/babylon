@@ -1,0 +1,6 @@
+Font files for ~/.local/share/fonts/babylon/, all from github.com/google/fonts (ofl/<family>):
+  cinzel/Cinzel[wght].ttf
+  alegreyasans/AlegreyaSans-{Regular,Medium,Bold,Italic}.ttf
+  shipporiminchob1/ShipporiMinchoB1-{Regular,ExtraBold}.ttf    15 MB each: kept only in the
+      snapshot (home/.local/share/fonts/babylon/); make.py carries them across a rebuild
+Amiri and IBM Plex Sans Arabic are copied from the base theme's font folder.

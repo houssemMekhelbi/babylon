@@ -1,0 +1,252 @@
+/* Babylon bar. One black plane flush with the top of the screen, closed by a
+ * gold hairline. Gold is line, never fill: the only solid gold on the bar is
+ * the focused workspace (and YAWM when something is due today). Crimson is for
+ * failure alone. Modules hang on a chain: babylon/chain.png separates them. The
+ * clock stands between two gates (babylon/gate.png). Workspaces are cuneiform
+ * numerals 1-10 drawn as images, one per slot and state (babylon/ws.css picks
+ * them). All PNGs and ws.css come from ~/.config/hypr/babylon/build-art.py.
+ * Hyprland blurs the layer. Type: Alegreya Sans labels, JetBrains Mono values,
+ * Cinzel for the time. */
+
+@import url("babylon/ws.css");
+
+@define-color ground   #0B0908;
+@define-color raised   #14100B;
+@define-color sel      #1E1810;
+@define-color line     #3A2E1A;
+@define-color dim      #7A6A4C;
+@define-color muted    #A99B80;
+@define-color text     #F0E7D2;
+@define-color gold     #D4A72C;
+@define-color goldlit  #F4D675;
+@define-color golddeep #8E6B1F;
+@define-color lapis    #7FA4E2;
+@define-color crim     #EB4B50;
+@define-color crimdeep #C2171F;
+
+* {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    text-shadow: none;
+    min-height: 0;
+    font-family: "Alegreya Sans", "IBM Plex Sans Arabic", "JetBrainsMono Nerd Font", sans-serif;
+    font-size: 13px;
+}
+
+window#waybar {
+    background: alpha(@ground, 0.93);
+    border-bottom: 1px solid @gold;
+    color: @text;
+}
+
+tooltip {
+    background: alpha(@raised, 0.97);
+    border: 1px solid @gold;
+}
+
+tooltip label {
+    padding: 2px;
+    color: @text;
+    font-family: "JetBrainsMono Nerd Font", monospace;
+}
+
+.modules-left {
+    padding-left: 14px;
+}
+
+.modules-right {
+    padding-right: 14px;
+}
+
+window#waybar.empty #window {
+    background-image: none;
+}
+
+/* ---- workspaces: cuneiform numerals --------------------------------- */
+/* hattin-workspaces prints a glyph per slot; here the glyph is hidden and
+ * babylon/ws.css gives every slot its numeral for the state: dim empty, gold
+ * occupied, lit on a dark block when active on another monitor, black on solid
+ * gold when focused, crimson urgent. The foreign slot stays text (its count
+ * varies): one ▽ per workspace, lapis. */
+
+#custom-ws-1, #custom-ws-2, #custom-ws-3, #custom-ws-4, #custom-ws-5,
+#custom-ws-6, #custom-ws-7, #custom-ws-8, #custom-ws-9, #custom-ws-10 {
+    min-width: 28px;
+    padding: 0;
+    margin: 7px 1px;
+    color: transparent;
+    font-size: 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 24px 24px;
+}
+
+#custom-ws-x {
+    min-width: 0;
+    padding: 0 8px 0 6px;
+    color: @lapis;
+    font-family: "DejaVu Sans Mono", "JetBrainsMono Nerd Font", monospace;
+    font-size: 12px;
+}
+
+#custom-ws-x.active {
+    color: @goldlit;
+}
+
+#custom-ws-1:hover, #custom-ws-2:hover, #custom-ws-3:hover, #custom-ws-4:hover,
+#custom-ws-5:hover, #custom-ws-6:hover, #custom-ws-7:hover, #custom-ws-8:hover,
+#custom-ws-9:hover, #custom-ws-10:hover, #custom-ws-x:hover {
+    background-color: alpha(@gold, 0.14);
+}
+
+/* ---- next prayer (custom/mawaqit) ------------------------------------ */
+/* City as a muted label, prayer muted, time in ivory (markup from
+ * waybar-mawaqit); classes: soon (<15m, time in lit gold), iqama, error.
+ * The chain hangs on the left of this module and of the window title. */
+
+#custom-mawaqit,
+#window {
+    padding: 0 8px 0 22px;
+    margin: 0 0 0 6px;
+    background-image: url("babylon/chain.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 8px 20px;
+}
+
+#custom-mawaqit {
+    color: @text;
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 11px;
+}
+
+#custom-mawaqit.error,
+#custom-mawaqit.unset {
+    color: @muted;
+}
+
+#window {
+    color: @muted;
+    font-size: 13px;
+}
+
+/* ---- instrument cluster: the chain hangs on the right of each module -------- */
+
+#custom-proton,
+#custom-tailscale,
+#network,
+#wireplumber,
+#bluetooth,
+#cpu,
+#memory,
+#temperature,
+#custom-nvidia,
+#power-profiles-daemon,
+#battery,
+#tray,
+#custom-tray-leader,
+#custom-notifications,
+#custom-idle {
+    padding: 0 22px 0 8px;
+    margin: 0;
+    background-image: url("babylon/chain.png");
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 8px 20px;
+    color: @text;
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 11px;
+}
+
+#custom-yawm {
+    padding: 0 10px;
+    margin: 8px 0 9px 8px;
+    color: @text;
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 11px;
+}
+
+/* The time in Cinzel between two gates. */
+#clock {
+    padding: 0 46px;
+    color: @goldlit;
+    font-family: "Cinzel", "JetBrainsMono Nerd Font", serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    background-image: url("babylon/gate.png"), url("babylon/gate.png");
+    background-repeat: no-repeat, no-repeat;
+    background-position: left center, right center;
+    background-size: 30px 22px, 30px 22px;
+}
+
+#power-profiles-daemon {
+    color: @muted;
+}
+
+#custom-proton.up,
+#custom-tailscale.up {
+    color: @lapis;
+}
+
+#custom-proton.down,
+#custom-tailscale.down {
+    color: @crim;
+}
+
+/* due today: the treasure, solid gold; overdue: failure, crimson */
+#custom-yawm.due {
+    color: @ground;
+    background: @gold;
+}
+
+#custom-yawm.overdue {
+    color: @text;
+    background: @crimdeep;
+}
+
+#custom-nvidia.active {
+    color: @lapis;
+}
+
+#custom-idle.off,
+#battery.warning,
+#temperature.critical {
+    color: @goldlit;
+}
+
+#battery.critical {
+    color: @crim;
+}
+
+/* ---- click-to-reveal groups (NET, SYS, ▽) ------------------------------ */
+
+#custom-tray-leader {
+    color: @gold;
+    font-family: "DejaVu Sans Mono", monospace;
+    font-size: 11px;
+}
+
+/* Revealed members sit on a slightly lighter ground so the group reads as one drawer. */
+.drawer-hidden {
+    background-color: @sel;
+}
+
+#network:hover,
+#cpu:hover,
+#custom-tray-leader:hover,
+#custom-mawaqit:hover,
+#custom-yawm:hover {
+    background-color: alpha(@gold, 0.12);
+}
+
+#custom-yawm.due:hover {
+    background-color: @goldlit;
+}
+
+#tray menu {
+    background: @raised;
+    border: 1px solid @gold;
+    color: @text;
+}

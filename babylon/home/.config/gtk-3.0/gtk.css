@@ -1,0 +1,316 @@
+/* Babylon for GTK3, layered on Adwaita-dark.
+ * Black surfaces, ivory text, hairlines in line, everything sharp. Gold is
+ * line, never fill, with one exception that is the whole selection language:
+ * the selected thing (sidebar place, file, menu item, current crumb) is solid
+ * gold with black text. Crimson is for errors alone. A small gold wedge
+ * separates the path segments (babylon/crumb-wedge.png from
+ * ~/.config/hypr/babylon/build-art.py).
+ * Thunar-only widgets are targeted through its own style classes
+ * (.path-bar-button, .standard-view, .shortcuts-pane, .statusbar-text); there
+ * is no .thunar class. Opacity comes from Hyprland, so backgrounds are opaque. */
+
+@define-color bab_ground   #0B0908;
+@define-color bab_raised   #14100B;
+@define-color bab_sel      #1E1810;
+@define-color bab_line     #3A2E1A;
+@define-color bab_dim      #7A6A4C;
+@define-color bab_muted    #A99B80;
+@define-color bab_text     #F0E7D2;
+@define-color bab_gold     #D4A72C;
+@define-color bab_goldlit  #F4D675;
+@define-color bab_golddeep #8E6B1F;
+@define-color bab_lapis    #7FA4E2;
+@define-color bab_crim     #EB4B50;
+
+@define-color theme_bg_color          @bab_ground;
+@define-color theme_fg_color          @bab_text;
+@define-color theme_base_color        @bab_raised;
+@define-color theme_text_color        @bab_text;
+@define-color theme_selected_bg_color @bab_gold;
+@define-color theme_selected_fg_color @bab_ground;
+@define-color insensitive_fg_color    @bab_dim;
+@define-color borders                 @bab_line;
+
+* {
+    font-family: "Alegreya Sans", "IBM Plex Sans Arabic", sans-serif;
+}
+
+/* ---- global: selection and scrollbars ------------------------------ */
+
+selection,
+*:selected,
+*:selected:focus {
+    background-color: @bab_gold;
+    color: @bab_ground;
+}
+
+scrollbar,
+scrollbar trough {
+    background: transparent;
+    border: none;
+}
+
+scrollbar slider {
+    min-width: 3px;
+    min-height: 3px;
+    border: none;
+    border-radius: 0;
+    background-color: alpha(@bab_gold, 0.40);
+}
+
+scrollbar slider:hover {
+    background-color: alpha(@bab_gold, 0.75);
+}
+
+tooltip,
+tooltip.background {
+    background-color: alpha(@bab_raised, 0.97);
+    border: 1px solid @bab_gold;
+    border-radius: 0;
+    color: @bab_text;
+}
+
+tooltip * {
+    color: @bab_text;
+}
+
+/* ---- surfaces ---------------------------------------------------- */
+
+window.background,
+menubar,
+.toolbar,
+toolbar,
+statusbar,
+notebook,
+notebook header,
+paned {
+    background-color: @bab_raised;
+    background-image: none;
+    color: @bab_text;
+    box-shadow: none;
+}
+
+.view,
+iconview,
+treeview.view,
+textview text,
+scrolledwindow viewport {
+    background-color: @bab_raised;
+    color: @bab_text;
+}
+
+.sidebar,
+.sidebar .view,
+placessidebar,
+placessidebar list {
+    background-color: @bab_ground;
+    color: @bab_text;
+}
+
+menubar,
+.toolbar,
+toolbar {
+    border-bottom: 1px solid @bab_line;
+}
+
+menubar > menuitem {
+    color: @bab_muted;
+}
+
+menubar > menuitem:hover {
+    background-color: @bab_sel;
+    color: @bab_goldlit;
+    box-shadow: inset 0 -1px @bab_gold;
+}
+
+menu,
+.menu,
+.context-menu,
+popover,
+popover.background {
+    background-color: @bab_raised;
+    border: 1px solid @bab_gold;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 2px;
+    color: @bab_text;
+}
+
+menu menuitem:hover,
+.menu menuitem:hover {
+    background-color: @bab_gold;
+    color: @bab_ground;
+    box-shadow: none;
+}
+
+entry {
+    background-color: @bab_ground;
+    border: 1px solid @bab_line;
+    border-radius: 0;
+    box-shadow: none;
+    color: @bab_text;
+    caret-color: @bab_goldlit;
+}
+
+entry:focus {
+    border-color: @bab_goldlit;
+}
+
+button {
+    border-radius: 0;
+}
+
+paned > separator {
+    background: @bab_line;
+    background-image: none;
+    min-width: 1px;
+    min-height: 1px;
+}
+
+headerbar {
+    background: @bab_raised;
+    border-bottom: 1px solid @bab_line;
+    border-radius: 0;
+    box-shadow: none;
+    color: @bab_text;
+}
+
+/* ---- Thunar ------------------------------------------------------- */
+
+/* Path bar: segments in muted mono with a small gold wedge after each; the
+ * current segment is solid gold. GTK3 CSS has no generated
+ * content, so the star is an image in each segment's right padding. */
+.path-bar-button {
+    background-color: transparent;
+    background-image: none;
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 10px 18px;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    color: @bab_muted;
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 11px;
+    padding: 3px 18px 3px 4px;
+    margin: 0;
+    min-height: 0;
+}
+
+.path-bar .path-bar-button {
+    background-image: -gtk-scaled(url("babylon/crumb-wedge.png"));
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 10px 18px;
+}
+
+.path-bar .path-bar-button:checked,
+.path-bar > .path-bar-button:nth-last-child(-n+2) {
+    background-image: none;
+}
+
+.path-bar-button:hover {
+    color: @bab_text;
+}
+
+.path-bar .path-bar-button:checked {
+    background-color: @bab_gold;
+    background-image: none;
+    border-radius: 0;
+    box-shadow: none;
+    color: @bab_ground;
+    font-weight: 700;
+    padding: 3px 12px;
+    margin: 4px 0 4px 4px;
+}
+
+.path-bar-button image {
+    color: @bab_muted;
+    -gtk-icon-style: symbolic;
+}
+
+.toolbar button,
+toolbar button {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    color: @bab_muted;
+}
+
+.toolbar button:hover,
+toolbar button:hover {
+    background-color: @bab_sel;
+    color: @bab_text;
+}
+
+.toolbar button:disabled,
+toolbar button:disabled {
+    color: alpha(@bab_dim, 0.7);
+}
+
+.shortcuts-pane {
+    border-right: 1px solid @bab_line;
+}
+
+/* Sidebar: plain 16px line icons; the current place is solid gold. */
+.sidebar .view {
+    padding: 3px 0;
+    font-size: 12px;
+}
+
+.sidebar .view:selected,
+.sidebar .view:selected:focus {
+    background-color: @bab_gold;
+    color: @bab_ground;
+    box-shadow: none;
+}
+
+.sidebar .view.cell:hover {
+    color: @bab_text;
+}
+
+/* Icon view and list view: the selected file is solid gold, its name in black. */
+.standard-view iconview:selected,
+.standard-view iconview:selected:focus,
+.standard-view iconview.view:selected,
+.standard-view iconview.view:selected:focus {
+    background-color: @bab_gold;
+    background-image: none;
+    color: @bab_ground;
+    outline: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.standard-view treeview.view:selected,
+.standard-view treeview.view:selected:focus {
+    background-color: @bab_gold;
+    color: @bab_ground;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.standard-view treeview.view header button {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid @bab_line;
+    color: @bab_muted;
+    font-family: "Alegreya Sans", sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.split-view-inactive-pane {
+    opacity: 0.8;
+}
+
+/* Status bar: small mono in muted. */
+statusbar,
+.statusbar-text {
+    border-top: 1px solid @bab_line;
+    color: @bab_muted;
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 11px;
+}

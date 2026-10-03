@@ -1,0 +1,8 @@
+# org.gnome.desktop.interface keys applied by restore.sh (captured 2026-09-19)
+gtk-theme='Adwaita'
+icon-theme='Babylon'
+color-scheme='prefer-dark'
+font-name='Alegreya Sans 11'
+monospace-font-name='JetBrainsMono Nerd Font 10'
+cursor-theme='BabylonBlade'
+cursor-size=24

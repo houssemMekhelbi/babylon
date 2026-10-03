@@ -1,0 +1,8 @@
+# Sayings shown on the Babylon lock screen, one per line: romaji | japanese | reading
+# Spaces in the Japanese split it into vertical columns, read right to left.
+# The reading is optional: a small katakana column beside the saying (avoid the
+# long-vowel mark ー there, it would lie sideways in a vertical column).
+# Blank lines and lines starting with # are skipped; the saying changes every
+# 10 minutes when there are several.
+enuma elish | 天地乖離す 開闢の星 | エヌマ・エリシュ
+manshin sezu shite nani ga ō ka | 慢心せずして 何が王か

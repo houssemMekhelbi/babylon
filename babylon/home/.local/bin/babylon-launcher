@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Babylon launcher: a floating foot window running fzf over desktop entries.
+# Hyprland gives it the gold line and the light (see hypr/babylon.lua); foot
+# requests the blur through ext-background-effect.
+# Pressing the bind again while it is open closes it.
+set -euo pipefail
+
+if hyprctl clients -j | grep -q '"class": "babylon-launcher"'; then
+    hyprctl eval 'babylon_close_launcher()' >/dev/null
+    exit 0
+fi
+
+exec foot \
+    --app-id=babylon-launcher \
+    --title=Launcher \
+    -o main.pad=18x14 \
+    -o main.font="JetBrainsMono Nerd Font:size=10.5" \
+    -o main.line-height=22 \
+    -o colors-dark.alpha=0.94 \
+    -o colors-light.alpha=0.94 \
+    "$HOME/.local/bin/babylon-launcher-menu"

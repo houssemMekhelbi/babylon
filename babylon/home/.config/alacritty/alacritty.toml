@@ -1,0 +1,79 @@
+# Babylon terminal. Night at 90%, compositor blur behind it.
+
+[window]
+opacity = 0.90
+padding = { x = 16, y = 16 }
+decorations = "None"
+blur = true
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+size = 10.5
+offset = { x = 0, y = 4 }
+
+[cursor]
+style = { shape = "Block", blinking = "Off" }
+vi_mode_style = { shape = "Block" }
+thickness = 0.2
+
+[colors.primary]
+background = "#0B0908"
+foreground = "#E8DFC9"
+bright_foreground = "#F0E7D2"
+
+[colors.cursor]
+text = "#0B0908"
+cursor = "#F4D675"
+
+[colors.selection]
+text = "#F0E7D2"
+background = "#1E1810"
+
+# Search, hints, the footer bar and the vi-mode cursor in the theme's colours (alacritty's stock ones otherwise).
+[colors.search.matches]
+foreground = "#0B0908"
+background = "#7FA4E2"
+
+[colors.search.focused_match]
+foreground = "#0B0908"
+background = "#F4D675"
+
+[colors.hints.start]
+foreground = "#0B0908"
+background = "#F4D675"
+
+[colors.hints.end]
+foreground = "#F4D675"
+background = "#1E1810"
+
+[colors.footer_bar]
+foreground = "#F0E7D2"
+background = "#1E1810"
+
+[colors.line_indicator]
+foreground = "#0B0908"
+background = "#D4A72C"
+
+[colors.vi_mode_cursor]
+text = "#0B0908"
+cursor = "#7FA4E2"
+
+[colors.normal]
+black   = "#0B0908"
+red     = "#EB4B50"
+green   = "#9DBB6A"
+yellow  = "#D4A72C"
+blue    = "#7FA4E2"
+magenta = "#B48ACB"
+cyan    = "#6CC0B5"
+white   = "#A99B80"
+
+[colors.bright]
+black   = "#6B5D42"
+red     = "#F47C7F"
+green   = "#B7D088"
+yellow  = "#F4D675"
+blue    = "#A6C1EE"
+magenta = "#CFABE0"
+cyan    = "#93D6CC"
+white   = "#F0E7D2"

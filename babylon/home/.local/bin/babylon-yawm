@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Taskwarrior popups for the waybar "yawm" module, same frames as the
+# launcher (window rules babylon-yawm / babylon-yawm-add in hypr/babylon.lua).
+#   babylon-yawm        task list  (click)
+#   babylon-yawm add    quick add  (right-click)
+# Running it again while that popup is open closes it.
+set -euo pipefail
+
+mode=${1:-list}
+if [[ $mode == add ]]; then
+    class=babylon-yawm-add title="Add task"
+else
+    class=babylon-yawm title="Yawm"
+fi
+
+if hyprctl clients -j | grep -q "\"class\": \"$class\""; then
+    hyprctl eval 'babylon_close_popups()' >/dev/null
+    exit 0
+fi
+
+exec foot \
+    --app-id="$class" \
+    --title="$title" \
+    -o main.pad=18x14 \
+    -o main.font="JetBrainsMono Nerd Font:size=10.5" \
+    -o main.line-height=22 \
+    -o colors-dark.alpha=0.94 \
+    -o colors-light.alpha=0.94 \
+    "$HOME/.local/bin/babylon-yawm-menu" "$mode"

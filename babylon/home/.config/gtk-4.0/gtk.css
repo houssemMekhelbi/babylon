@@ -1,0 +1,40 @@
+/* Babylon for GTK4 / libadwaita: named colours only, so apps keep their own
+ * layout while picking up the palette. The accent is gold with black text on
+ * it, which is the theme's selection language; destructive and error are
+ * crimson. */
+
+@define-color accent_color            #F4D675;
+@define-color accent_bg_color         #D4A72C;
+@define-color accent_fg_color         #0B0908;
+
+@define-color destructive_color       #EB4B50;
+@define-color destructive_bg_color    #C2171F;
+@define-color destructive_fg_color    #F0E7D2;
+@define-color success_color           #9DBB6A;
+@define-color success_bg_color        #9DBB6A;
+@define-color warning_color           #F4D675;
+@define-color warning_bg_color        #D4A72C;
+@define-color warning_fg_color        #0B0908;
+@define-color error_color             #EB4B50;
+@define-color error_bg_color          #C2171F;
+
+@define-color window_bg_color         #0B0908;
+@define-color window_fg_color         #F0E7D2;
+@define-color view_bg_color           #14100B;
+@define-color view_fg_color           #F0E7D2;
+@define-color headerbar_bg_color      #14100B;
+@define-color headerbar_fg_color      #F0E7D2;
+@define-color headerbar_border_color  #3A2E1A;
+@define-color headerbar_backdrop_color #0B0908;
+@define-color sidebar_bg_color        #0B0908;
+@define-color sidebar_fg_color        #F0E7D2;
+@define-color sidebar_border_color    #3A2E1A;
+@define-color secondary_sidebar_bg_color #0B0908;
+@define-color card_bg_color           #14100B;
+@define-color card_fg_color           #F0E7D2;
+@define-color dialog_bg_color         #14100B;
+@define-color dialog_fg_color         #F0E7D2;
+@define-color popover_bg_color        #14100B;
+@define-color popover_fg_color        #F0E7D2;
+@define-color thumbnail_bg_color      #1E1810;
+@define-color borders                 #3A2E1A;

@@ -1,0 +1,20 @@
+# Taskwarrior. Shown in waybar as "yawm" (~/.local/bin/waybar-yawm):
+#   click        list popup   (~/.local/bin/babylon-yawm -> babylon-yawm-menu)
+#   right-click  quick add    (~/.local/bin/babylon-yawm add)
+# Tasks tagged +note are notes: listed last, never counted in the bar.
+
+data.location=~/.local/share/task
+news.version=3.5.0
+editor=nvim
+weekstart=monday
+
+# Babylon colours (256-colour approximations): overdue in crimson, due today
+# in lit gold, notes in lapis.
+color.due.today=bold rgb542
+color.due=rgb431
+color.overdue=bold rgb511
+color.tag.note=rgb245
+color.active=rgb245
+color.header=rgb432
+color.label=rgb432
+color.footnote=rgb321
