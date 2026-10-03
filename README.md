@@ -55,8 +55,8 @@ sudo pacman -S --needed $(grep -v '^#' babylon/packages.txt)
 > Everything it replaces is backed up first.
 
 ```sh
-git clone https://github.com/houssemMekhelbi/hattin-babylon.git
-cd hattin-babylon
+git clone https://github.com/houssemMekhelbi/babylon.git
+cd babylon
 ./babylon/restore.sh --dry-run   # show what would change, touch nothing
 ./babylon/restore.sh             # apply
 ```
